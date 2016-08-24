@@ -26,7 +26,7 @@ bash 'install ruby' do
     export HOME=/home/#{node['user']['name']}
     export RBENV_ROOT="${HOME}/.rbenv"
     export PATH="${RBENV_ROOT}/bin:${PATH}"
-    rbenv init -
+    eval "$(rbenv init -)"
 
     rbenv install #{node['ruby']['version']}
     rbenv global #{node['ruby']['version']}
