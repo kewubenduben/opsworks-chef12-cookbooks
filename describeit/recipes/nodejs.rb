@@ -37,9 +37,13 @@ bash 'install nodejs' do
   user node['user']['name']
   cwd "/home/#{node['user']['name']}"
   code <<-EOH
+    export HOME=/home/#{node['user']['name']}
+
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.6/install.sh | bash
+
     export NVM_DIR="/home/#{node['user']['name']}/.nvm"
     [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"  # This loads nvm
+    
     nvm install "#{node['nodejs']['version']}"
 
     npm install bower -g
