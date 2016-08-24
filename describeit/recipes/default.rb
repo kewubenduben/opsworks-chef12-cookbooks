@@ -38,16 +38,17 @@ execute "apt-get update"
 end
 
 # install project packages
+# note: gs-esp package replaced with ghostscript-x
+#       https://github.com/raducotescu/CanonCAPTdriver/issues/1#issuecomment-14830287
 %w(
   ghostscript
-  gs-esp
+  ghostscript-x
   imagemagick
   libgs-dev
   libmysqlclient-dev
   monit
   mysql-client
   openssl
-
 ).each do |p|
   package p
 end
