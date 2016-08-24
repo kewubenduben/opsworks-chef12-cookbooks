@@ -33,8 +33,7 @@
 # end
 
 # install nodejs
-version_path = "/home/#{node['user']['name']}/.nvm/alias/lts"
-bash 'install ruby' do
+bash 'install nodejs' do
   user node['user']['name']
   cwd "/home/#{node['user']['name']}"
   code <<-EOH
@@ -45,5 +44,4 @@ bash 'install ruby' do
 
     npm install bower -g
   EOH
-  not_if { File.exists?(version_path) }
 end
