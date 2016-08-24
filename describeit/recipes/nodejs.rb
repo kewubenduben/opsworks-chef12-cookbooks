@@ -42,6 +42,8 @@ bash 'install ruby' do
     export NVM_DIR="/home/#{node['user']['name']}/.nvm"
     [ -s "${NVM_DIR}/nvm.sh" ] && . "${NVM_DIR}/nvm.sh"  # This loads nvm
     nvm install "#{node['nodejs']['version']}"
+
+    npm install bower -g
   EOH
   not_if { File.exists?(version_path)
 end
