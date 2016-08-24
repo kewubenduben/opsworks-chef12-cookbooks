@@ -10,31 +10,48 @@
 execute "apt-get update"
 
 # install default packages
-package "telnet"
-package "postfix"
-package "curl"
-package "git-core"
-package "zlib1g-dev"
-package "libssl-dev"
-package "libreadline-dev"
-package "libyaml-dev"
-package "libsqlite3-dev"
-package "sqlite3"
-package "libxml2-dev"
-package "libxslt1-dev"
-package "libpq-dev"
-package "build-essential"
-package "tree"
+%w(
+  autoconf
+  bison
+  build-essential
+  curl
+  git-core
+  libffi-dev
+  libgdbm-dev
+  libgdbm3
+  libncurses5-dev
+  libpq-dev
+  libreadline-dev
+  libreadline6-dev
+  libsqlite3-dev
+  libssl-dev
+  libxml2-dev
+  libxslt1-dev
+  libyaml-dev
+  postfix
+  sqlite3
+  telnet
+  tree
+  zlib1g-dev
+).each do |p|
+  package p
+end
 
 # install project packages
-package "mysql-client"
-package "libmysqlclient-dev"
-package "monit"
-package "openssl"
-package "ghostscript"
-package "libgs-dev"
-package "gs-esp"
-package "imagemagick"
+%w(
+  ghostscript
+  gs-esp
+  imagemagick
+  libgs-dev
+  libmysqlclient-dev
+  monit
+  mysql-client
+  openssl
+
+).each do |p|
+  package p
+end
+
 
 # set timezone
 bash "set timezone" do
