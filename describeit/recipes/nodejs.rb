@@ -45,5 +45,5 @@ bash 'install ruby' do
 
     npm install bower -g
   EOH
-  not_if { File.exists?(version_path)
+  not_if { File.exists?(version_path) }
 end
