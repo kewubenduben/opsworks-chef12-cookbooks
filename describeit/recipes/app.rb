@@ -22,6 +22,12 @@ template "#{path}/secrets.yml" do
   group node['group']
 end
 
+execute "mkdir -p #{path}/log" do
+  user node['user']['name']
+  group node['group']
+  action "mkdir -p #{path}/log"
+end
+
 # # set puma config
 # template "/etc/init.d/unicorn_#{node['app']}" do
 #   source "unicorn.sh.erb"
