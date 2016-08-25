@@ -4,8 +4,8 @@
   nodejs
   wkhtmltopdf
   redis
-  nginx
   app
+  nginx
 ).each do |r|
   include_recipe "describeit::#{r}"
 end
