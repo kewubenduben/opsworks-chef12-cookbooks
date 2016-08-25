@@ -1,4 +1,5 @@
 package 'xvfb'
+package 'xfonts-75dpi'
 
 # download wkhtmltopdf
 remote_file "/home/#{node['user']['name']}/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb" do
