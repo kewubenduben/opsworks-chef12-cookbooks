@@ -8,18 +8,18 @@ upstream puma_server {
 #
 server {
   listen 80;
-  rewrite ^(.*)  https://$host$1 permanent;
-}
 
-server {
+  proxy_set_header X-Forwarded-Proto $scheme;
+  if ( $http_x_forwarded_proto != 'https' ) {
+    return 301 https://$host$request_uri;
+  }
 
-  listen 443;
+  # ssl on;
+  # ssl_certificate /etc/ssl/<%= node['ssl']['cert'] %>.chained.crt;
+  # ssl_certificate_key /etc/ssl/<%= node['ssl']['cert'] %>.key;
+  # ssl_session_cache shared:SSL:10m;
+  # ssl_session_timeout 10m;
 
-  ssl on;
-  ssl_certificate /etc/ssl/<%= node['ssl']['cert'] %>.chained.crt;
-  ssl_certificate_key /etc/ssl/<%= node['ssl']['cert'] %>.key;
-  ssl_session_cache shared:SSL:10m;
-  ssl_session_timeout 10m;
   root /home/<%= node['user']['name'] %>/<%= node['app'] %>/current/public;
 
   location ^~ /assets/ {
