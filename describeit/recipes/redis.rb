@@ -29,7 +29,7 @@ end
 ruby_block "insert_line to redis config" do
   block do
     file = Chef::Util::FileEdit.new("/etc/redis/6379.conf")
-    file.insert_line_if_no_match("/include \/etc\/redis\/customredis\.conf/", "include /etc/redis/customredis.conf")
+    file.insert_line_if_no_match("/customredis/", "include /etc/redis/customredis.conf")
     file.write_file
   end
 end
