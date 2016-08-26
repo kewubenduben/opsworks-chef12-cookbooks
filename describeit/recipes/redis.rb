@@ -34,9 +34,13 @@ ruby_block "insert_line to redis config" do
   end
 end
 
+execute "sudo restart redis" do
+  action :nothing
+end
+
 # create .bash_profile file
 cookbook_file "/etc/redis/customredis.conf" do
   source "customredis.conf"
   mode 0644
-  notifies :restart, "service[redis_6379]", :delayed
+  notifies :restart, "execute[sudo restart redis]", :delayed
 end
