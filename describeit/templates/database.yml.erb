@@ -1,9 +1,1 @@
-<%= node['stage'] %>:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  pool: 5
-  host: <%= node['db']['hostname'] %>
-  database: <%= node['db']['database'] %>
-  username: <%= node['db']['user']['name'] %>
-  password: <%= node['db']['user']['password'] %>
+<%= node['database'].to_yaml %>

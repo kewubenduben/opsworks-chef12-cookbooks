@@ -13,7 +13,6 @@ default['app'] = 'describeit-sample-app'
 
 default['stage'] = 'development'
 
-default['db']['hostname'] = 'dbhost'
-default['db']['database'] = 'dbname'
-default['db']['user']['name'] = 'dbuser'
-default['db']['user']['password'] = 'dbpassword'
+default['database'] = {}
+
+default['secret'] = {}
