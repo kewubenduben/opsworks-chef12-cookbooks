@@ -14,3 +14,4 @@ default['stage'] = 'development'
 default['database'] = {}
 
 default['secret'] = {}
+

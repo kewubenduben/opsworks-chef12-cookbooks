@@ -24,3 +24,17 @@ execute "curl -L https://gist.githubusercontent.com/vladigleba/28f4f6b4454947c52
   cwd "/home/#{node['user']['name']}/redis-#{node['redis']['version']}/utils"
   not_if "ls /etc/init.d | grep redis"
 end
+
+# create .bash_profile file
+cookbook_file "/etc/redis/customredis.conf" do
+  source "customredis.conf"
+  mode 0644
+end
+
+ruby_block "insert_line to redis config" do
+  block do
+    file = Chef::Util::FileEdit.new("/etc/redis/6379.conf")
+    file.insert_line_if_no_match("/include \/etc\/redis\/customredis.conf/", "include /etc/redis/customredis.conf")
+    file.write_file
+  end
+end
