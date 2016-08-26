@@ -15,3 +15,4 @@ default['database'] = {}
 
 default['secret'] = {}
 
+default['ssl']['cert'] = 'snake-oil'
